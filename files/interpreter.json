@@ -1,0 +1,572 @@
+{
+  "interpreterSettings": {
+    "python": {
+      "id": "python",
+      "name": "python",
+      "group": "python",
+      "properties": {
+        "zeppelin.python": {
+          "name": "zeppelin.python",
+          "value": "/home/hdfs/3env/bin/python",
+          "type": "string",
+          "description": "Python binary executable path. It is set to python by default.(assume python is in your $PATH)"
+        },
+        "zeppelin.python.maxResult": {
+          "name": "zeppelin.python.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of dataframe rows to display."
+        },
+        "zeppelin.python.useIPython": {
+          "name": "zeppelin.python.useIPython",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use IPython when it is available in `%python`"
+        },
+        "zeppelin.ipython.launch.timeout": {
+          "name": "zeppelin.ipython.launch.timeout",
+          "value": "30000",
+          "type": "number",
+          "description": "Time out for ipython launch"
+        },
+        "zeppelin.ipython.grpc.message_size": {
+          "name": "zeppelin.ipython.grpc.message_size",
+          "value": "33554432",
+          "type": "number",
+          "description": "grpc message size, default is 32M"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "python",
+          "class": "org.apache.zeppelin.python.PythonInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ipython",
+          "class": "org.apache.zeppelin.python.IPythonInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.python.PythonInterpreterPandasSql",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "conda",
+          "class": "org.apache.zeppelin.python.PythonCondaInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "docker",
+          "class": "org.apache.zeppelin.python.PythonDockerInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "jupyter": {
+      "id": "jupyter",
+      "name": "jupyter",
+      "group": "jupyter",
+      "properties": {},
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "jupyter",
+          "class": "org.apache.zeppelin.jupyter.JupyterInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "text",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "sh": {
+      "id": "sh",
+      "name": "sh",
+      "group": "sh",
+      "properties": {
+        "shell.command.timeout.millisecs": {
+          "name": "shell.command.timeout.millisecs",
+          "value": "60000",
+          "type": "number",
+          "description": "Shell command time out in millisecs. Default \u003d 60000"
+        },
+        "shell.working.directory.user.home": {
+          "name": "shell.working.directory.user.home",
+          "value": false,
+          "type": "checkbox",
+          "description": "If this set to true, the shell\u0027s working directory will be set to user home"
+        },
+        "zeppelin.shell.auth.type": {
+          "name": "zeppelin.shell.auth.type",
+          "value": "",
+          "type": "string",
+          "description": "If auth type is needed, Example: KERBEROS"
+        },
+        "zeppelin.shell.keytab.location": {
+          "name": "zeppelin.shell.keytab.location",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos keytab location"
+        },
+        "zeppelin.shell.principal": {
+          "name": "zeppelin.shell.principal",
+          "value": "",
+          "type": "string",
+          "description": "Kerberos principal"
+        },
+        "zeppelin.shell.interpolation": {
+          "name": "zeppelin.shell.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into paragraph text"
+        },
+        "zeppelin.terminal.ip.mapping": {
+          "name": "zeppelin.terminal.ip.mapping",
+          "value": "",
+          "type": "string",
+          "description": "Internal and external IP mapping of zeppelin server"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "sh",
+          "class": "org.apache.zeppelin.shell.ShellInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          }
+        },
+        {
+          "name": "terminal",
+          "class": "org.apache.zeppelin.shell.TerminalInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sh",
+            "editOnDblClick": false,
+            "completionSupport": false
+          },
+          "config": {
+            "checkEmpty": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "spark": {
+      "id": "spark",
+      "name": "spark",
+      "group": "spark",
+      "properties": {
+        "SPARK_HOME": {
+          "name": "SPARK_HOME",
+          "value": "/opt/spark",
+          "type": "string",
+          "description": "Location of spark distribution"
+        },
+        "spark.master": {
+          "name": "spark.master",
+          "value": "yarn",
+          "type": "string",
+          "description": "Spark master uri. local | yarn-client | yarn-cluster | spark master address of standalone mode, ex) spark://master_host:7077"
+        },
+        "spark.submit.deployMode": {
+          "name": "spark.submit.deployMode",
+          "value": "cluster",
+          "type": "string",
+          "description": "The deploy mode of Spark driver program, either \"client\" or \"cluster\", Which means to launch driver program locally (\"client\") or remotely (\"cluster\") on one of the nodes inside the cluster."
+        },
+        "spark.app.name": {
+          "name": "spark.app.name",
+          "value": "",
+          "type": "string",
+          "description": "The name of spark application."
+        },
+        "spark.driver.cores": {
+          "name": "spark.driver.cores",
+          "value": "1",
+          "type": "number",
+          "description": "Number of cores to use for the driver process, only in cluster mode."
+        },
+        "spark.driver.memory": {
+          "name": "spark.driver.memory",
+          "value": "1g",
+          "type": "string",
+          "description": "Amount of memory to use for the driver process, i.e. where SparkContext is initialized, in the same format as JVM memory strings with a size unit suffix (\"k\", \"m\", \"g\" or \"t\") (e.g. 512m, 2g)."
+        },
+        "spark.executor.cores": {
+          "name": "spark.executor.cores",
+          "value": "1",
+          "type": "number",
+          "description": "The number of cores to use on each executor"
+        },
+        "spark.executor.memory": {
+          "name": "spark.executor.memory",
+          "value": "1g",
+          "type": "string",
+          "description": "Executor memory per worker instance. ex) 512m, 32g"
+        },
+        "spark.executor.instances": {
+          "name": "spark.executor.instances",
+          "value": "2",
+          "type": "number",
+          "description": "The number of executors for static allocation."
+        },
+        "spark.files": {
+          "name": "spark.files",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of files to be placed in the working directory of each executor. Globs are allowed."
+        },
+        "spark.jars": {
+          "name": "spark.jars",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of jars to include on the driver and executor classpaths. Globs are allowed."
+        },
+        "spark.jars.packages": {
+          "name": "spark.jars.packages",
+          "value": "",
+          "type": "string",
+          "description": "Comma-separated list of Maven coordinates of jars to include on the driver and executor classpaths. The coordinates should be groupId:artifactId:version. If spark.jars.ivySettings is given artifacts will be resolved according to the configuration in the file, otherwise artifacts will be searched for in the local maven repo, then maven central and finally any additional remote repositories given by the command-line option --repositories."
+        },
+        "zeppelin.spark.useHiveContext": {
+          "name": "zeppelin.spark.useHiveContext",
+          "value": false,
+          "type": "checkbox",
+          "description": "Use HiveContext instead of SQLContext if it is true. Enable hive for SparkSession."
+        },
+        "zeppelin.spark.printREPLOutput": {
+          "name": "zeppelin.spark.printREPLOutput",
+          "value": true,
+          "type": "checkbox",
+          "description": "Print REPL output"
+        },
+        "zeppelin.spark.maxResult": {
+          "name": "zeppelin.spark.maxResult",
+          "value": "1000",
+          "type": "number",
+          "description": "Max number of result to display."
+        },
+        "zeppelin.spark.enableSupportedVersionCheck": {
+          "name": "zeppelin.spark.enableSupportedVersionCheck",
+          "value": false,
+          "type": "checkbox",
+          "description": "Whether checking supported spark version. Developer only setting, not for production use"
+        },
+        "zeppelin.spark.uiWebUrl": {
+          "name": "zeppelin.spark.uiWebUrl",
+          "value": "",
+          "type": "string",
+          "description": "Override Spark UI default URL. In Kubernetes mode, value can be Jinja template string with 3 template variables \u0027PORT\u0027, \u0027SERVICE_NAME\u0027 and \u0027SERVICE_DOMAIN\u0027. (ex: http://{{PORT}}-{{SERVICE_NAME}}.{{SERVICE_DOMAIN}})"
+        },
+        "zeppelin.spark.ui.hidden": {
+          "name": "zeppelin.spark.ui.hidden",
+          "value": false,
+          "type": "checkbox",
+          "description": "Whether hide spark ui in zeppelin ui"
+        },
+        "spark.webui.yarn.useProxy": {
+          "name": "spark.webui.yarn.useProxy",
+          "value": false,
+          "type": "checkbox",
+          "description": "whether use yarn proxy url as spark weburl, e.g. http://localhost:8088/proxy/application_1583396598068_0004"
+        },
+        "zeppelin.spark.scala.color": {
+          "name": "zeppelin.spark.scala.color",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether enable color output of spark scala interpreter"
+        },
+        "zeppelin.spark.deprecatedMsg.show": {
+          "name": "zeppelin.spark.deprecatedMsg.show",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether show the spark deprecated message, spark 2.2 and before are deprecated. Zeppelin will display warning message by default"
+        },
+        "zeppelin.spark.concurrentSQL": {
+          "name": "zeppelin.spark.concurrentSQL",
+          "value": true,
+          "type": "checkbox",
+          "description": "Execute multiple SQL concurrently if set true."
+        },
+        "zeppelin.spark.concurrentSQL.max": {
+          "name": "zeppelin.spark.concurrentSQL.max",
+          "value": "10",
+          "type": "number",
+          "description": "Max number of SQL concurrently executed"
+        },
+        "zeppelin.spark.sql.stacktrace": {
+          "name": "zeppelin.spark.sql.stacktrace",
+          "value": true,
+          "type": "checkbox",
+          "description": "Show full exception stacktrace for SQL queries if set to true."
+        },
+        "zeppelin.spark.sql.interpolation": {
+          "name": "zeppelin.spark.sql.interpolation",
+          "value": false,
+          "type": "checkbox",
+          "description": "Enable ZeppelinContext variable interpolation into spark sql"
+        },
+        "PYSPARK_PYTHON": {
+          "name": "PYSPARK_PYTHON",
+          "value": "/home/hdfs/3env/bin/python",
+          "type": "string",
+          "description": "Python binary executable to use for PySpark in both driver and workers (default is python2.7 if available, otherwise python). Property `spark.pyspark.python` take precedence if it is set"
+        },
+        "PYSPARK_DRIVER_PYTHON": {
+          "name": "PYSPARK_DRIVER_PYTHON",
+          "value": "/home/hdfs/3env/bin/python",
+          "type": "string",
+          "description": "Python binary executable to use for PySpark in driver only (default is `PYSPARK_PYTHON`). Property `spark.pyspark.driver.python` take precedence if it is set"
+        },
+        "zeppelin.pyspark.useIPython": {
+          "name": "zeppelin.pyspark.useIPython",
+          "value": true,
+          "type": "checkbox",
+          "description": "Whether use IPython when it is available"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "spark",
+          "class": "org.apache.zeppelin.spark.SparkInterpreter",
+          "defaultInterpreter": true,
+          "editor": {
+            "language": "scala",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "sql",
+          "class": "org.apache.zeppelin.spark.SparkSqlInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "sql",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "pyspark",
+          "class": "org.apache.zeppelin.spark.PySparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": true
+          }
+        },
+        {
+          "name": "ipyspark",
+          "class": "org.apache.zeppelin.spark.IPySparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "python",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "r",
+          "class": "org.apache.zeppelin.spark.SparkRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": false,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "ir",
+          "class": "org.apache.zeppelin.spark.SparkIRInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "shiny",
+          "class": "org.apache.zeppelin.spark.SparkShinyInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "r",
+            "editOnDblClick": false,
+            "completionSupport": true,
+            "completionKey": "TAB"
+          }
+        },
+        {
+          "name": "kotlin",
+          "class": "org.apache.zeppelin.spark.KotlinSparkInterpreter",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "kotlin",
+            "editOnDblClick": false,
+            "completionKey": "TAB",
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "perNote": "shared",
+        "perUser": "shared",
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    },
+    "md": {
+      "id": "md",
+      "name": "md",
+      "group": "md",
+      "properties": {
+        "markdown.parser.type": {
+          "name": "markdown.parser.type",
+          "value": "flexmark",
+          "type": "string",
+          "description": "Markdown Parser Type. Available values: pegdown, markdown4j, flexmark. Default \u003d flexmark"
+        }
+      },
+      "status": "READY",
+      "interpreterGroup": [
+        {
+          "name": "md",
+          "class": "org.apache.zeppelin.markdown.Markdown",
+          "defaultInterpreter": false,
+          "editor": {
+            "language": "markdown",
+            "editOnDblClick": true,
+            "completionSupport": false
+          }
+        }
+      ],
+      "dependencies": [],
+      "option": {
+        "remote": true,
+        "port": -1,
+        "isExistingProcess": false,
+        "setPermission": false,
+        "owners": [],
+        "isUserImpersonate": false
+      }
+    }
+  },
+  "interpreterRepositories": [
+    {
+      "id": "central",
+      "type": "default",
+      "url": "https://repo1.maven.org/maven2/",
+      "host": "repo1.maven.org",
+      "protocol": "https",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    },
+    {
+      "id": "local",
+      "type": "default",
+      "url": "file:///home/hdfs/.m2/repository",
+      "host": "",
+      "protocol": "file",
+      "releasePolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "snapshotPolicy": {
+        "enabled": true,
+        "updatePolicy": "daily",
+        "checksumPolicy": "warn"
+      },
+      "mirroredRepositories": [],
+      "repositoryManager": false
+    }
+  ]
+}
