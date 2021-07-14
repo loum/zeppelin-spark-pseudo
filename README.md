@@ -1,3 +1,4 @@
+
 # Apache Zeppelin (with Apache Spark on YARN over Pseudo Distributed Hadoop)
 - [Overview](#Overview)
 - [Quick Links](#Quick-Links)
@@ -28,6 +29,7 @@ docker run --rm -d\
  --env ZEPPELIN_ADDR=0.0.0.0\
  --env ZEPPELIN_PORT=18888\
  --env ZEPPELIN_INTERPRETER_DEP_MVNREPO=https://repo1.maven.org/maven2/\
+ --env SPARK_HOME=/opt/spark\
  --publish 7077:7077\
  --publish 8032:8032\
  --publish 8088:8088\
@@ -64,6 +66,7 @@ There should be a `make` target to get most things done.  Check the help for mor
 ```
 make help
 ```
+## Docker Image Management
 ### Image Build
 ```
 make build-image
@@ -89,11 +92,10 @@ make controlled-run
 ```
 Browse to http://localhost:[ZEPPELIN_PORT] (`ZEPPELIN_PORT` defaults to `18888`).
 
-```
 To stop:
 ```
 make stop
 ```
 
 ---
-[top](#Apache-Zeppelin-(with-Apache-Spark-on-YARN-over-Pseudo-Distributed-Hadoop)
+[top](#Apache-Zeppelin-(with-Apache-Spark-on-YARN-over-Pseudo-Distributed-Hadoop))
