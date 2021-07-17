@@ -26,6 +26,8 @@ ARG PYTHON3_PIP
 RUN apt-get update && apt-get install -y --no-install-recommends\
  python3-pip=$PYTHON3_PIP\
  python3-venv\
+ build-essential\
+ python3-dev\
  vim\
  wget\
  less &&\
@@ -71,7 +73,6 @@ WORKDIR $ZEPPELIN_HOME
 USER $ZEPPELIN_USER
 
 # Create the zeppelin-env.sh file.
-#RUN cp zeppelin/conf/zeppelin-env.sh.template zeppelin/conf/zeppelin-env.sh
 RUN echo 'export USE_HADOOP=true\n\
 export SPARK_HOME=/opt/spark/\n\
 export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop/\n'\
@@ -79,14 +80,26 @@ export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop/\n'\
 
 # Need iPython for python interpreter.
 RUN python -m venv 3env
+RUN 3env/bin/python -m pip install --upgrade pip setuptools
 RUN 3env/bin/python -m pip install\
  --no-cache-dir\
- pandas\
  jupyter-client\
  grpcio\
  protobuf\
  ipykernel\
- ipython
+ ipython\
+ matplotlib\
+ plotnine\
+ seaborn\
+ bokeh\
+ bundle\
+ hvplot\
+ intake\
+ intake-parquet\
+ intake-xarray\
+ msgpack\
+ altair\
+ vega_datasets
 
 # Use our own interpreter.json file.
 COPY --chown=$ZEPPELIN_USER:$ZEPPELIN_GROUP\
