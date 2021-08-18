@@ -9,10 +9,29 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
  ca-certificates
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+WORKDIR /tmp
 ARG ZEPPELIN_VERSION
 RUN wget -qO-\
  https://apache.mirror.digitalpacific.com.au/zeppelin/zeppelin-$ZEPPELIN_VERSION/zeppelin-$ZEPPELIN_VERSION-bin-netinst.tgz |\
- tar -C /tmp -xzf -
+ tar -C . -xzf -
+
+# Use our own interpreter.json file.
+COPY files/interpreter.json zeppelin-${ZEPPELIN_VERSION}-bin-netinst/conf/interpreter.json
+
+# Merge the Cassandra Interpreter definition into conf/interpreter.json
+COPY scripts/interpreter-*.py zeppelin-${ZEPPELIN_VERSION}-bin-netinst/
+
+COPY files/interpreter-cassandra.json.j2 zeppelin-${ZEPPELIN_VERSION}-bin-netinst/conf
+
+WORKDIR /tmp/zeppelin-$ZEPPELIN_VERSION-bin-netinst/local-repo/cassandra
+ARG MAVEN_REPO=https://repo1.maven.org/maven2
+RUN wget $MAVEN_REPO/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar &&\
+ wget $MAVEN_REPO/org/scalatra/scalate/scalate-core_2.11/1.7.1/scalate-core_2.11-1.7.1.jar &&\
+ wget $MAVEN_REPO/org/scalatra/scalate/scalate-util_2.11/1.7.1/scalate-util_2.11-1.7.1.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.jar
 
 ### downloader layer end
 
@@ -27,10 +46,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends\
  python3-pip=$PYTHON3_PIP\
  python3-venv\
  build-essential\
- python3-dev\
- vim\
- wget\
- less &&\
+ python3-dev &&\
  rm -rf /var/lib/apt/lists/*
 
 # Run everything as ZEPPELIN_USER
@@ -55,7 +71,7 @@ RUN rm -fr angular\
  r
 
 WORKDIR $ZEPPELIN_HOME/.local
-RUN chown -R $ZEPPELIN_USER:$ZEPPELIN_GROUP $ZEPPELIN_HOME/.local
+RUN chown -R $ZEPPELIN_USER:$ZEPPELIN_GROUP .
 
 # YARN ResourceManager port.
 EXPOSE 8032
@@ -101,8 +117,6 @@ RUN 3env/bin/python -m pip install\
  altair\
  vega_datasets
 
-# Use our own interpreter.json file.
-COPY --chown=$ZEPPELIN_USER:$ZEPPELIN_GROUP\
- files/interpreter.json zeppelin/conf/interpreter.json
+RUN ZEPPELIN_HOME=$ZEPPELIN_HOME/zeppelin zeppelin/bin/install-interpreter.sh --name cassandra
 
 ENTRYPOINT [ "/zeppelin-bootstrap.sh" ]

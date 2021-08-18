@@ -1,0 +1,253 @@
+{
+  "cassandra": {
+    "id": "cassandra",
+    "name": "cassandra",
+    "group": "cassandra",
+    "properties": {
+      "cassandra.hosts": {
+        "name": "cassandra.hosts",
+        "value": "{{ ZEPPELIN_INTERPRETER_CASSANDRA_HOSTS|default('localhost') }}",
+        "type": "textarea",
+        "description": "Comma separated Cassandra hosts (DNS name or IP address). Default \u003d localhost. Ex: \u0027192.168.0.12,node2,node3\u0027"
+      },
+      "cassandra.native.port": {
+        "name": "cassandra.native.port",
+        "value": "9042",
+        "type": "number",
+        "description": "Cassandra native port. Default \u003d 9042"
+      },
+      "cassandra.protocol.version": {
+        "name": "cassandra.protocol.version",
+        "value": "DEFAULT",
+        "type": "string",
+        "description": "Cassandra protocol version. Default \u003d auto-detect"
+      },
+      "cassandra.cluster": {
+        "name": "cassandra.cluster",
+        "value": "Test Cluster",
+        "type": "string",
+        "description": "Cassandra cluster name. Default \u003d \u0027Test Cluster\u0027"
+      },
+      "cassandra.keyspace": {
+        "name": "cassandra.keyspace",
+        "value": "system",
+        "type": "string",
+        "description": "Cassandra keyspace name. Default \u003d \u0027system\u0027"
+      },
+      "cassandra.compression.protocol": {
+        "name": "cassandra.compression.protocol",
+        "value": "NONE",
+        "type": "string",
+        "description": "Cassandra compression protocol. Available values: NONE, SNAPPY, LZ4. Default \u003d NONE"
+      },
+      "cassandra.credentials.username": {
+        "name": "cassandra.credentials.username",
+        "value": "none",
+        "type": "string",
+        "description": "Cassandra credentials username. Default \u003d \u0027none\u0027"
+      },
+      "cassandra.credentials.password": {
+        "name": "cassandra.credentials.password",
+        "value": "none",
+        "type": "password",
+        "description": "Cassandra credentials password. Default \u003d \u0027none\u0027"
+      },
+      "cassandra.load.balancing.policy": {
+        "name": "cassandra.load.balancing.policy",
+        "value": "DEFAULT",
+        "type": "string",
+        "description": "Class name for Load Balancing Policy. Default \u003d DefaultLoadBalancingPolicy"
+      },
+      "cassandra.retry.policy": {
+        "name": "cassandra.retry.policy",
+        "value": "DEFAULT",
+        "type": "string",
+        "description": "Class name for Retry Policy. Default \u003d DefaultRetryPolicy"
+      },
+      "cassandra.reconnection.policy": {
+        "name": "cassandra.reconnection.policy",
+        "value": "DEFAULT",
+        "type": "string",
+        "description": "Class name for Reconnection Policy. Default \u003d ExponentialReconnectionPolicy"
+      },
+      "cassandra.speculative.execution.policy": {
+        "name": "cassandra.speculative.execution.policy",
+        "value": "DEFAULT",
+        "type": "string",
+        "description": "Class name for Speculative Execution Policy. Default \u003d NoSpeculativeExecutionPolicy"
+      },
+      "cassandra.interpreter.parallelism": {
+        "name": "cassandra.interpreter.parallelism",
+        "value": "10",
+        "type": "number",
+        "description": "Cassandra interpreter parallelism.Default \u003d 10"
+      },
+      "cassandra.max.schema.agreement.wait.second": {
+        "name": "cassandra.max.schema.agreement.wait.second",
+        "value": "10",
+        "type": "number",
+        "description": "Cassandra max schema agreement wait in second.Default \u003d ProtocolOptions.DEFAULT_MAX_SCHEMA_AGREEMENT_WAIT_SECONDS"
+      },
+      "cassandra.pooling.connection.per.host.local": {
+        "name": "cassandra.pooling.connection.per.host.local",
+        "value": "1",
+        "type": "number",
+        "description": "Cassandra connections per host local. Protocol V3 and above default \u003d 1"
+      },
+      "cassandra.pooling.connection.per.host.remote": {
+        "name": "cassandra.pooling.connection.per.host.remote",
+        "value": "1",
+        "type": "number",
+        "description": "Cassandra connections per host remote. Protocol V3 and above default \u003d 1"
+      },
+      "cassandra.pooling.max.request.per.connection": {
+        "name": "cassandra.pooling.max.request.per.connection",
+        "value": "1024",
+        "type": "number",
+        "description": "Cassandra max requests per connection. Protocol V3 and above default \u003d 1024"
+      },
+      "cassandra.pooling.pool.timeout.millisecs": {
+        "name": "cassandra.pooling.pool.timeout.millisecs",
+        "value": "5000",
+        "type": "number",
+        "description": "Cassandra pool time out in millisecs. Default \u003d 5000"
+      },
+      "cassandra.pooling.heartbeat.interval.seconds": {
+        "name": "cassandra.pooling.heartbeat.interval.seconds",
+        "value": "30",
+        "type": "number",
+        "description": "Cassandra pool heartbeat interval in secs. Default \u003d 30"
+      },
+      "cassandra.query.default.consistency": {
+        "name": "cassandra.query.default.consistency",
+        "value": "ONE",
+        "type": "string",
+        "description": "Cassandra query default consistency level. Default \u003d ONE"
+      },
+      "cassandra.query.default.serial.consistency": {
+        "name": "cassandra.query.default.serial.consistency",
+        "value": "SERIAL",
+        "type": "string",
+        "description": "Cassandra query default serial consistency level. Default \u003d SERIAL"
+      },
+      "cassandra.query.default.fetchSize": {
+        "name": "cassandra.query.default.fetchSize",
+        "value": "5000",
+        "type": "number",
+        "description": "Cassandra query default fetch size. Default \u003d 5000"
+      },
+      "cassandra.socket.connection.timeout.millisecs": {
+        "name": "cassandra.socket.connection.timeout.millisecs",
+        "value": "5000",
+        "type": "number",
+        "description": "Cassandra socket default connection timeout in millisecs. Default \u003d 5000"
+      },
+      "cassandra.socket.read.timeout.millisecs": {
+        "name": "cassandra.socket.read.timeout.millisecs",
+        "value": "12000",
+        "type": "number",
+        "description": "Cassandra socket read timeout in millisecs. Default \u003d 12000"
+      },
+      "cassandra.socket.tcp.no_delay": {
+        "name": "cassandra.socket.tcp.no_delay",
+        "value": true,
+        "type": "checkbox",
+        "description": "Cassandra socket TCP no delay. Default \u003d true"
+      },
+      "cassandra.ssl.enabled": {
+        "name": "cassandra.ssl.enabled",
+        "value": false,
+        "type": "checkbox",
+        "description": "Cassandra SSL"
+      },
+      "cassandra.ssl.truststore.path": {
+        "name": "cassandra.ssl.truststore.path",
+        "value": "none",
+        "type": "string",
+        "description": "Cassandra truststore path. Default \u003d none"
+      },
+      "cassandra.ssl.truststore.password": {
+        "name": "cassandra.ssl.truststore.password",
+        "value": "none",
+        "type": "password",
+        "description": "Cassandra truststore password. Default \u003d none"
+      },
+      "cassandra.format.output": {
+        "name": "cassandra.format.output",
+        "value": "human",
+        "type": "string",
+        "description": "Output format: human-readable, or strict CQL. Default \u003d human"
+      },
+      "cassandra.format.locale": {
+        "name": "cassandra.format.locale",
+        "value": "en_US",
+        "type": "string",
+        "description": "Locale for formatting of output data. Default \u003d en_US"
+      },
+      "cassandra.format.timezone": {
+        "name": "cassandra.format.timezone",
+        "value": "UTC",
+        "type": "string",
+        "description": "Timezone for output of time/date-related values. Default \u003d UTC"
+      },
+      "cassandra.format.timestamp": {
+        "name": "cassandra.format.timestamp",
+        "value": "yyyy-MM-dd\u0027T\u0027HH:mm:ss.SSSXXX",
+        "type": "string",
+        "description": "Format string for timestamp columns"
+      },
+      "cassandra.format.date": {
+        "name": "cassandra.format.date",
+        "value": "yyyy-MM-dd",
+        "type": "string",
+        "description": "Format string for date columns"
+      },
+      "cassandra.format.time": {
+        "name": "cassandra.format.time",
+        "value": "HH:mm:ss.SSS",
+        "type": "string",
+        "description": "Format string for time columns"
+      },
+      "cassandra.format.float_precision": {
+        "name": "cassandra.format.float_precision",
+        "value": "5",
+        "type": "number",
+        "description": "Precision for formatting of float values"
+      },
+      "cassandra.format.double_precision": {
+        "name": "cassandra.format.double_precision",
+        "value": "12",
+        "type": "number",
+        "description": "Precision for formatting of double values"
+      },
+      "cassandra.format.decimal_precision": {
+        "name": "cassandra.format.decimal_precision",
+        "value": "-1",
+        "type": "number",
+        "description": "Precision for formatting of decimal values (by default, show everything)"
+      }
+    },
+    "status": "READY",
+    "interpreterGroup": [
+      {
+        "name": "cassandra",
+        "class": "org.apache.zeppelin.cassandra.CassandraInterpreter",
+        "defaultInterpreter": false,
+        "editor": {
+          "editOnDblClick": false
+        }
+      }
+    ],
+    "dependencies": [],
+    "option": {
+      "remote": true,
+      "port": -1,
+      "perNote": "shared",
+      "perUser": "shared",
+      "isExistingProcess": false,
+      "setPermission": false,
+      "owners": [],
+      "isUserImpersonate": false
+    }
+  }
+}

@@ -7,7 +7,7 @@ SPARK_VERSION := 3.1.2
 
 # Tagging convention used: <zeppelin-version>-<spark-version>-<image-release-number>
 MAKESTER__VERSION := $(ZEPPELIN_VERSION)-$(SPARK_VERSION)
-MAKESTER__RELEASE_NUMBER := 2
+MAKESTER__RELEASE_NUMBER := 3
 
 MAKESTER__CONTAINER_NAME := zeppelin-spark-pseudo
 
@@ -19,7 +19,7 @@ UBUNTU_BASE_IMAGE := focal-20210609
 SPARK_PSEUDO_BASE_IMAGE := 3.2.2-$(SPARK_VERSION)-1
 OPENJDK_8_HEADLESS := 8u292-b10-0ubuntu1~20.04
 PYTHON3_VERSION := 3.8.10-0ubuntu1~20.04
-PYTHON3_PIP := 20.0.2-5ubuntu1.5
+PYTHON3_PIP := 20.0.2-5ubuntu1.6
 
 MAKESTER__BUILD_COMMAND = $(DOCKER) build --rm\
  --no-cache\
