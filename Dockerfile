@@ -39,8 +39,6 @@ ARG SPARK_PSEUDO_BASE_IMAGE
 FROM loum/spark-pseudo:$SPARK_PSEUDO_BASE_IMAGE
 
 USER root
-ARG OPENJDK_8_HEADLESS
-ARG PYTHON3_VERSION
 ARG PYTHON3_PIP
 RUN apt-get update && apt-get install -y --no-install-recommends\
  python3-pip=$PYTHON3_PIP\
