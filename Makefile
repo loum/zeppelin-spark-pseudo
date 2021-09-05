@@ -2,12 +2,12 @@
 
 MAKESTER__REPO_NAME := loum
 
-ZEPPELIN_VERSION := 0.9.0
+ZEPPELIN_VERSION := 0.10.0
 SPARK_VERSION := 3.1.2
 
 # Tagging convention used: <zeppelin-version>-<spark-version>-<image-release-number>
 MAKESTER__VERSION := $(ZEPPELIN_VERSION)-$(SPARK_VERSION)
-MAKESTER__RELEASE_NUMBER := 4
+MAKESTER__RELEASE_NUMBER := 1
 
 MAKESTER__CONTAINER_NAME := zeppelin-spark-pseudo
 

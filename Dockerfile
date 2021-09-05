@@ -115,6 +115,9 @@ RUN 3env/bin/python -m pip install\
  altair\
  vega_datasets
 
-RUN ZEPPELIN_HOME=$ZEPPELIN_HOME/zeppelin zeppelin/bin/install-interpreter.sh --name cassandra
+RUN ZEPPELIN_HOME=$ZEPPELIN_HOME/zeppelin\
+ zeppelin/bin/install-interpreter.sh\
+ --name cassandra\
+ --artifact org.apache.zeppelin:zeppelin-cassandra:0.10.0
 
 ENTRYPOINT [ "/zeppelin-bootstrap.sh" ]
