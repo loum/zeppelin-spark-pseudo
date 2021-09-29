@@ -7,7 +7,7 @@ SPARK_VERSION := 3.1.2
 
 # Tagging convention used: <zeppelin-version>-<spark-version>-<image-release-number>
 MAKESTER__VERSION := $(ZEPPELIN_VERSION)-$(SPARK_VERSION)
-MAKESTER__RELEASE_NUMBER := 1
+MAKESTER__RELEASE_NUMBER := 2
 
 MAKESTER__CONTAINER_NAME := zeppelin-spark-pseudo
 
@@ -16,15 +16,13 @@ include makester/makefiles/docker.mk
 include makester/makefiles/python-venv.mk
 
 UBUNTU_BASE_IMAGE := focal-20210827
-SPARK_PSEUDO_BASE_IMAGE := 3.2.2-$(SPARK_VERSION)-4
-PYTHON3_PIP := 20.0.2-5ubuntu1.6
+SPARK_PSEUDO_BASE_IMAGE := 3.3.1-$(SPARK_VERSION)
 
 MAKESTER__BUILD_COMMAND = $(DOCKER) build --rm\
  --no-cache\
  --build-arg UBUNTU_BASE_IMAGE=$(UBUNTU_BASE_IMAGE)\
  --build-arg SPARK_PSEUDO_BASE_IMAGE=$(SPARK_PSEUDO_BASE_IMAGE)\
  --build-arg ZEPPELIN_VERSION=$(ZEPPELIN_VERSION)\
- --build-arg PYTHON3_PIP=$(PYTHON3_PIP)\
  -t $(MAKESTER__IMAGE_TAG_ALIAS) .
 
 ZEPPELIN_ADDR ?= 0.0.0.0

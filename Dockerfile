@@ -39,9 +39,7 @@ ARG SPARK_PSEUDO_BASE_IMAGE
 FROM loum/spark-pseudo:$SPARK_PSEUDO_BASE_IMAGE
 
 USER root
-ARG PYTHON3_PIP
 RUN apt-get update && apt-get install -y --no-install-recommends\
- python3-pip=$PYTHON3_PIP\
  python3-venv\
  build-essential\
  python3-dev &&\
@@ -93,8 +91,11 @@ export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop/\n'\
 >> zeppelin/conf/zeppelin-env.sh
 
 # Need iPython for python interpreter.
+#
+# Check https://setuptools.pypa.io/en/latest/history.html#v58-0-0 as
+# to why we're pinning setuptools<58
 RUN python -m venv 3env
-RUN 3env/bin/python -m pip install --upgrade pip setuptools
+RUN 3env/bin/python -m pip install --upgrade pip "setuptools<58"
 RUN 3env/bin/python -m pip install\
  --no-cache-dir\
  jupyter-client\
