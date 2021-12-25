@@ -3,11 +3,11 @@
 MAKESTER__REPO_NAME := loum
 
 ZEPPELIN_VERSION := 0.10.0
-SPARK_VERSION := 3.1.2
+SPARK_VERSION := 3.2.0
 
 # Tagging convention used: <zeppelin-version>-<spark-version>-<image-release-number>
 MAKESTER__VERSION := $(ZEPPELIN_VERSION)-$(SPARK_VERSION)
-MAKESTER__RELEASE_NUMBER := 3
+MAKESTER__RELEASE_NUMBER := 1
 
 MAKESTER__CONTAINER_NAME := zeppelin-spark-pseudo
 
@@ -15,7 +15,7 @@ include makester/makefiles/makester.mk
 include makester/makefiles/docker.mk
 include makester/makefiles/python-venv.mk
 
-UBUNTU_BASE_IMAGE := focal-20210921
+UBUNTU_BASE_IMAGE := focal-20211006
 SPARK_PSEUDO_BASE_IMAGE := 3.3.1-$(SPARK_VERSION)
 
 MAKESTER__BUILD_COMMAND = $(DOCKER) build --rm\
@@ -35,6 +35,7 @@ MAKESTER__RUN_COMMAND := $(DOCKER) run --rm -d\
  --env ZEPPELIN_PORT=$(ZEPPELIN_PORT)\
  --env ZEPPELIN_INTERPRETER_DEP_MVNREPO=$(ZEPPELIN_INTERPRETER_DEP_MVNREPO)\
  --env SPARK_HOME=/opt/spark\
+ --env YARN_SITE__YARN_NODEMANAGER_RESOURCE_DETECT_HARDWARE_CAPABILITIES:=true\
  --publish 7077:7077\
  --publish 8032:8032\
  --publish 8088:8088\
@@ -58,7 +59,7 @@ controlled-run: run backoff
 hadoop-version:
 	@$(DOCKER) exec -ti $(MAKESTER__CONTAINER_NAME) /opt/hadoop/bin/hadoop version || true
 
-spark-version: controlled-run
+spark-version:
 	@$(DOCKER) exec $(MAKESTER__CONTAINER_NAME) bash -c\
  "HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop /opt/spark/bin/spark-submit --version" || true
 
