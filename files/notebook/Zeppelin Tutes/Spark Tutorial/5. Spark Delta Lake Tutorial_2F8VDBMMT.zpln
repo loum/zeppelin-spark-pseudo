@@ -1,0 +1,413 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\nThis is a tutorial for using Spark [Delta Lake](https://delta.io/) in Zeppelin. You need to run the following paragraph first to load `delta` package.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 03:53:44.614",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis is a tutorial for using Spark \u003ca href\u003d\"https://delta.io/\"\u003eDelta Lake\u003c/a\u003e in Zeppelin. You need to run the following paragraph first to load \u003ccode\u003edelta\u003c/code\u003e package.\u003c/p\u003e\n\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588572279774_1507831415",
+      "id": "paragraph_1588572279774_1507831415",
+      "dateCreated": "2020-05-04 14:04:39.775",
+      "dateStarted": "2021-07-15 15:06:27.800",
+      "dateFinished": "2021-07-15 15:06:27.813",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.conf\n\nspark.jars.packages io.delta:delta-core_2.12:1.0.0",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:27:54.564",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/text"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588147206215_1200788867",
+      "id": "paragraph_1588147206215_1200788867",
+      "dateCreated": "2020-04-29 16:00:06.215",
+      "dateStarted": "2022-10-10 22:27:54.568",
+      "dateFinished": "2022-10-10 22:27:54.570",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Create a table",
+      "text": "%spark\n\nval data \u003d spark.range(0, 5)\ndata.write.format(\"delta\").save(\"/tmp/delta-table\")\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:27:59.192",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[Long]\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d0"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588147833426_1914590471",
+      "id": "paragraph_1588147833426_1914590471",
+      "dateCreated": "2020-04-29 16:10:33.426",
+      "dateStarted": "2022-10-10 22:27:59.194",
+      "dateFinished": "2022-10-10 22:28:36.829",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Read a table",
+      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").load(\"/tmp/delta-table\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:28:41.476",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  2|\n|  3|\n|  4|\n|  0|\n|  1|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d2"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588147853461_1624743216",
+      "id": "paragraph_1588147853461_1624743216",
+      "dateCreated": "2020-04-29 16:10:53.462",
+      "dateStarted": "2022-10-10 22:28:41.479",
+      "dateFinished": "2022-10-10 22:28:43.368",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Overwrite",
+      "text": "%spark\n\nval data \u003d spark.range(5, 10)\ndata.write.format(\"delta\").mode(\"overwrite\").save(\"/tmp/delta-table\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:29:02.054",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  7|\n|  8|\n|  9|\n|  5|\n|  6|\n+---+\n\n\u001b[1m\u001b[34mdata\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.Dataset[Long]\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d5"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d7"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d8"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d9"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d10"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588148062120_1790808564",
+      "id": "paragraph_1588148062120_1790808564",
+      "dateCreated": "2020-04-29 16:14:22.120",
+      "dateStarted": "2022-10-10 22:29:02.056",
+      "dateFinished": "2022-10-10 22:29:06.551",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Conditional update without overwrite",
+      "text": "%spark\n\nimport io.delta.tables._\nimport org.apache.spark.sql.functions._\n\nval deltaTable \u003d DeltaTable.forPath(\"/tmp/delta-table\")\n\n// Update every even value by adding 100 to it\ndeltaTable.update(\n  condition \u003d expr(\"id % 2 \u003d\u003d 0\"),\n  set \u003d Map(\"id\" -\u003e expr(\"id + 100\")))\n\n// Delete every even value\ndeltaTable.delete(condition \u003d expr(\"id % 2 \u003d\u003d 0\"))\n\n// Upsert (merge) new data\nval newData \u003d spark.range(0, 20).toDF\n\ndeltaTable.as(\"oldData\")\n  .merge(\n    newData.as(\"newData\"),\n    \"oldData.id \u003d newData.id\")\n  .whenMatched\n  .update(Map(\"id\" -\u003e col(\"newData.id\")))\n  .whenNotMatched\n  .insert(Map(\"id\" -\u003e col(\"newData.id\")))\n  .execute()\n\ndeltaTable.toDF.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:29:18.382",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.spark.sql.AnalysisException: This Delta operation requires the SparkSession to be configured with the\nDeltaSparkSessionExtension and the DeltaCatalog. Please set the necessary\nconfigurations when creating the SparkSession as shown below.\n\n  SparkSession.builder()\n    .option(\"spark.sql.extensions\", \"io.delta.sql.DeltaSparkSessionExtension\")\n    .option(\"spark.sql.catalog.spark_catalog\", \"org.apache.spark.sql.delta.catalog.DeltaCatalog\")\n    ...\n    .build()\n\n  at org.apache.spark.sql.delta.DeltaErrors$.configureSparkSessionWithExtensionAndCatalog(DeltaErrors.scala:1064)\n  at org.apache.spark.sql.delta.util.AnalysisHelper.improveUnsupportedOpError(AnalysisHelper.scala:89)\n  at org.apache.spark.sql.delta.util.AnalysisHelper.improveUnsupportedOpError$(AnalysisHelper.scala:73)\n  at io.delta.tables.DeltaTable.improveUnsupportedOpError(DeltaTable.scala:42)\n  at io.delta.tables.execution.DeltaTableOperations.executeUpdate(DeltaTableOperations.scala:62)\n  at io.delta.tables.execution.DeltaTableOperations.executeUpdate$(DeltaTableOperations.scala:60)\n  at io.delta.tables.DeltaTable.executeUpdate(DeltaTable.scala:42)\n  at io.delta.tables.DeltaTable.update(DeltaTable.scala:244)\n  ... 44 elided\nCaused by: java.lang.UnsupportedOperationException: UPDATE TABLE is not supported temporarily.\n  at org.apache.spark.sql.execution.SparkStrategies$BasicOperators$.apply(SparkStrategies.scala:716)\n  at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$1(QueryPlanner.scala:63)\n  at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)\n  at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)\n  at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:489)\n  at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)\n  at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:67)\n  at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)\n  at scala.collection.TraversableOnce.$anonfun$foldLeft$1(TraversableOnce.scala:162)\n  at scala.collection.TraversableOnce.$anonfun$foldLeft$1$adapted(TraversableOnce.scala:162)\n  at scala.collection.Iterator.foreach(Iterator.scala:941)\n  at scala.collection.Iterator.foreach$(Iterator.scala:941)\n  at scala.collection.AbstractIterator.foreach(Iterator.scala:1429)\n  at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:162)\n  at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:160)\n  at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1429)\n  at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)\n  at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)\n  at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)\n  at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)\n  at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:67)\n  at org.apache.spark.sql.execution.QueryExecution$.createSparkPlan(QueryExecution.scala:391)\n  at org.apache.spark.sql.execution.QueryExecution.$anonfun$sparkPlan$1(QueryExecution.scala:104)\n  at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:111)\n  at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:143)\n  at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n  at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:143)\n  at org.apache.spark.sql.execution.QueryExecution.sparkPlan$lzycompute(QueryExecution.scala:104)\n  at org.apache.spark.sql.execution.QueryExecution.sparkPlan(QueryExecution.scala:97)\n  at org.apache.spark.sql.execution.QueryExecution.$anonfun$executedPlan$1(QueryExecution.scala:117)\n  at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:111)\n  at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:143)\n  at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n  at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:143)\n  at org.apache.spark.sql.execution.QueryExecution.executedPlan$lzycompute(QueryExecution.scala:117)\n  at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:110)\n  at org.apache.spark.sql.execution.QueryExecution.$anonfun$simpleString$2(QueryExecution.scala:161)\n  at org.apache.spark.sql.execution.ExplainUtils$.processPlan(ExplainUtils.scala:115)\n  at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:161)\n  at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:206)\n  at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:175)\n  at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:98)\n  at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)\n  at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)\n  at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n  at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)\n  at org.apache.spark.sql.Dataset.withAction(Dataset.scala:3685)\n  at org.apache.spark.sql.Dataset.\u003cinit\u003e(Dataset.scala:228)\n  at org.apache.spark.sql.Dataset$.$anonfun$ofRows$1(Dataset.scala:91)\n  at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)\n  at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:88)\n  at org.apache.spark.sql.delta.util.AnalysisHelper.toDataset(AnalysisHelper.scala:70)\n  at org.apache.spark.sql.delta.util.AnalysisHelper.toDataset$(AnalysisHelper.scala:69)\n  at io.delta.tables.DeltaTable.toDataset(DeltaTable.scala:42)\n  at io.delta.tables.execution.DeltaTableOperations.$anonfun$executeUpdate$1(DeltaTableOperations.scala:67)\n  at org.apache.spark.sql.delta.util.AnalysisHelper.improveUnsupportedOpError(AnalysisHelper.scala:87)\n  ... 50 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588147954117_626957150",
+      "id": "paragraph_1588147954117_626957150",
+      "dateCreated": "2020-04-29 16:12:34.117",
+      "dateStarted": "2022-10-10 22:29:18.385",
+      "dateFinished": "2022-10-10 22:29:18.981",
+      "status": "ERROR"
+    },
+    {
+      "title": "Read older versions of data using time travel",
+      "text": "%spark\n\nval df \u003d spark.read.format(\"delta\").option(\"versionAsOf\", 0).load(\"/tmp/delta-table\")\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10 22:29:40.836",
+      "progress": 60,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+---+\n| id|\n+---+\n|  2|\n|  3|\n|  4|\n|  0|\n|  1|\n+---+\n\n\u001b[1m\u001b[34mdf\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [id: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d11"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d12"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d13"
+            },
+            {
+              "jobUrl": "http://zeppelin-spark-pseudo:45067/jobs/job?id\u003d14"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588148133131_1770029903",
+      "id": "paragraph_1588148133131_1770029903",
+      "dateCreated": "2020-04-29 16:15:33.131",
+      "dateStarted": "2022-10-10 22:29:40.838",
+      "dateFinished": "2022-10-10 22:29:43.586",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-04-29 16:18:21.603",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588148301603_1997345504",
+      "id": "paragraph_1588148301603_1997345504",
+      "dateCreated": "2020-04-29 16:18:21.603",
+      "status": "READY"
+    }
+  ],
+  "name": "5. Spark Delta Lake Tutorial",
+  "id": "2F8VDBMMT",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

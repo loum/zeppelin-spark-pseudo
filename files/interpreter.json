@@ -7,7 +7,7 @@
       "properties": {
         "zeppelin.python": {
           "name": "zeppelin.python",
-          "value": "/home/hdfs/3env/bin/python",
+          "value": "python3",
           "type": "string",
           "description": "Python binary executable path. It is set to python by default.(assume python is in your $PATH)"
         },
@@ -373,13 +373,13 @@
         },
         "PYSPARK_PYTHON": {
           "name": "PYSPARK_PYTHON",
-          "value": "/home/hdfs/3env/bin/python",
+          "value": "python3",
           "type": "string",
           "description": "Python binary executable to use for PySpark in both driver and workers (default is python2.7 if available, otherwise python). Property `spark.pyspark.python` take precedence if it is set"
         },
         "PYSPARK_DRIVER_PYTHON": {
           "name": "PYSPARK_DRIVER_PYTHON",
-          "value": "/home/hdfs/3env/bin/python",
+          "value": "python3",
           "type": "string",
           "description": "Python binary executable to use for PySpark in driver only (default is `PYSPARK_PYTHON`). Property `spark.pyspark.driver.python` take precedence if it is set"
         },

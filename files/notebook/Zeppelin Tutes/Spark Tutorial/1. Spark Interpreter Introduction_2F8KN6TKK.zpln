@@ -1,0 +1,354 @@
+{
+  "paragraphs": [
+    {
+      "title": "",
+      "text": "%md\n\nThe Zeppelin `Spark` interpreter hooks into a bundled instance of Apache Spark which is primed, configured and ready to go.\n\n> **_NOTE:_** See [loum/spark-pseudo](https://hub.docker.com/repository/docker/loum/spark-pseudo) for the underlying Apache Spark (on Pseudo Distributed Hadoop).\n\nIf you are curious about the `%spark` interpreter settings, we use the following:\n- `SPARK_HOME`: `/opt/spark`\n- `USE_HADOOP`: `true`\n- `HADOOP_CONF_DIR`: `/opt/hadoop/etc/hadoop`\n- `spark.master`: `yarn`\n- `spark.submit.deployMode`: `cluster`\n\nCertain settings can be configured via the generic inline configuration `%spark.conf` (detailed below).",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T02:12:40+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762311_275695566",
+      "id": "20180530-211919_1936070943",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T02:12:37+0000",
+      "dateFinished": "2022-10-12T02:12:37+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:183",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>The Zeppelin <code>Spark</code> interpreter hooks into a bundled instance of Apache Spark which is primed, configured and ready to go.</p>\n<blockquote>\n<p><strong><em>NOTE:</em></strong> See <a href=\"https://hub.docker.com/repository/docker/loum/spark-pseudo\">loum/spark-pseudo</a> for the underlying Apache Spark (on Pseudo Distributed Hadoop).</p>\n</blockquote>\n<p>If you are curious about the <code>%spark</code> interpreter settings, we use the following:</p>\n<ul>\n<li><code>SPARK_HOME</code>: <code>/opt/spark</code></li>\n<li><code>USE_HADOOP</code>: <code>true</code></li>\n<li><code>HADOOP_CONF_DIR</code>: <code>/opt/hadoop/etc/hadoop</code></li>\n<li><code>spark.master</code>: <code>yarn</code></li>\n<li><code>spark.submit.deployMode</code>: <code>cluster</code></li>\n</ul>\n<p>Certain settings can be configured via the generic inline configuration <code>%spark.conf</code> (detailed below).</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Use Generic Inline Configuration instead of Interpreter Setting",
+      "text": "%md\n\nInline configuration with `%spark.conf` allows you to change Spark parameters as per [Apache Spark configuration](http://spark.apache.org/docs/latest/configuration.html).  The main distinction here is that inline configuration with `%spark.conf` is specific to your workflow.  `Spark` interpreter settings are shared globally across all notebooks.\n\nThe following is an example of how to customize your spark interpreter.\n\n> **_NOTE:_** it is important `%spark.conf` paragraph is run _before_ launching a `Spark` interpreter process. Because these customisation won't take effect after `Spark` interpreter process is launched.",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T02:12:55+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762316_737450410",
+      "id": "20180531-100923_1307061430",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T02:12:50+0000",
+      "dateFinished": "2022-10-12T02:12:50+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:184",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Inline configuration with <code>%spark.conf</code> allows you to change Spark parameters as per <a href=\"http://spark.apache.org/docs/latest/configuration.html\">Apache Spark configuration</a>.  The main distinction here is that inline configuration with <code>%spark.conf</code> is specific to your workflow.  <code>Spark</code> interpreter settings are shared globally across all notebooks.</p>\n<p>The following is an example of how to customize your spark interpreter.</p>\n<blockquote>\n<p><strong><em>NOTE:</em></strong> it is important <code>%spark.conf</code> paragraph is run <em>before</em> launching a <code>Spark</code> interpreter process. Because these customisation won&rsquo;t take effect after <code>Spark</code> interpreter process is launched.</p>\n</blockquote>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Generic Inline Configuration - Run only if the defaults don't suit your workflow",
+      "text": "%spark.conf\n\nSPARK_HOME  <PATH_TO_SPARK_HOME>\n\n# set driver memrory to 8g\nspark.driver.memory 8g\n\n# set executor number to be 6\nspark.executor.instances  6\n\n# set executor memrory 4g\nspark.executor.memory  4g",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T01:57:27+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": false,
+        "title": true,
+        "tableHide": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762316_1311021507",
+      "id": "20180531-101615_648039641",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2021-07-15T11:48:48+0000",
+      "dateFinished": "2021-07-15T11:48:48+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:185"
+    },
+    {
+      "title": "Use Third Party Library",
+      "text": "%md\n\nThird party libraries can be included with:\n\n- `Generic Inline Configuration`: the recommended way to add third party jars/packages\n  - Use `spark.jars` for adding local jar file and `spark.jars.packages` for adding packages\n- `Spark` Interpreter Setting: You can also config `spark.jars` and `spark.jars.packages` via the `Spark` interpreter setting.  However, as libraries typically application specific it is recommended to use `Generic Inline Configuration`\n\nThe following is an example for including the package `com.databricks:spark-avro_2.11:4.0.0`:\n1. First we specify it in `%spark.conf`\n2. Then we can use it in the next paragraph\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T01:57:27+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762323_1299339607",
+      "id": "20180530-212309_72587811",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2021-07-17T01:18:13+0000",
+      "dateFinished": "2021-07-17T01:18:13+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:186"
+    },
+    {
+      "title": "Generic Inline Configuration Example: Define the Dependency",
+      "text": "%spark.conf\n\n# spark.jars can be used for adding any local jar files into spark interpreter\n# spark.jars  <path_to_local_jar>\n\n# spark.jars.packages can be used for adding packages into spark interpreter\n# The following is to add avro into your spark interpreter\nspark.jars.packages io.circe:circe-generic_2.12:0.14.3\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T01:57:27+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/text",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762323_630094194",
+      "id": "20180530-222209_612020876",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T01:57:27+0000",
+      "dateFinished": "2022-10-12T01:57:27+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:187"
+    },
+    {
+      "title": "Generic Inline Configuration Example: Execute with New Dependency",
+      "text": "%spark\n\nimport io.circe._, io.circe.generic.auto._, io.circe.syntax._\n\nsealed trait Foo\ncase class Bar(xs: Vector[String]) extends Foo\ncase class Qux(i: Int, d: Option[Double]) extends Foo\n\nval foo: Foo = Qux(13, Some(14.0))\n\nval json = foo.asJson.noSpaces\nprintln(json)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T01:57:28+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 6,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "{\"Qux\":{\"i\":13,\"d\":14.0}}\nimport io.circe._\nimport io.circe.generic.auto._\nimport io.circe.syntax._\ndefined trait Foo\ndefined class Bar\ndefined class Qux\n\u001b[1m\u001b[34mfoo\u001b[0m: \u001b[1m\u001b[32mFoo\u001b[0m = Qux(13,Some(14.0))\n\u001b[1m\u001b[34mjson\u001b[0m: \u001b[1m\u001b[32mString\u001b[0m = {\"Qux\":{\"i\":13,\"d\":14.0}}\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762324_60233930",
+      "id": "20180530-222838_1995256600",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T01:57:28+0000",
+      "dateFinished": "2022-10-12T01:57:29+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:188"
+    },
+    {
+      "title": "Code Completion in Scala",
+      "text": "%md\n\nCode completion only works _after_ the `Spark` interpreter has been launched. The trick is to run a simple statement such as `sc.version` to enable the facility.\n\n![code_completion](https://user-images.githubusercontent.com/164491/40758276-1ab2783e-64bf-11e8-9c1e-d132455234b3.gif)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T02:12:26+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762324_1893956125",
+      "id": "20180531-095404_2000387113",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T02:11:53+0000",
+      "dateFinished": "2022-10-12T02:11:55+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:189",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Code completion only works <em>after</em> the <code>Spark</code> interpreter has been launched. The trick is to run a simple statement such as <code>sc.version</code> to enable the facility.</p>\n<p><img src=\"https://user-images.githubusercontent.com/164491/40758276-1ab2783e-64bf-11e8-9c1e-d132455234b3.gif\" alt=\"code_completion\" /></p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "",
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-12T01:57:29+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1588214762325_1205048464",
+      "id": "20180531-134529_63265354",
+      "dateCreated": "2020-04-30T10:46:02+0000",
+      "dateStarted": "2022-10-12T01:57:29+0000",
+      "dateFinished": "2022-10-12T01:57:29+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:190"
+    }
+  ],
+  "name": "1. Spark Interpreter Introduction",
+  "id": "2F8KN6TKK",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/Zeppelin Tutes/Spark Tutorial/1. Spark Interpreter Introduction"
+}

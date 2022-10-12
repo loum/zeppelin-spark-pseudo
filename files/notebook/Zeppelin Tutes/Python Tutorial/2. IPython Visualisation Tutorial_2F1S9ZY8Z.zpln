@@ -1,0 +1,1091 @@
+{
+  "paragraphs": [
+    {
+      "title": "Overview",
+      "text": "%md\n\nThis tutorial demonstrates how to use many of the Python visualisation libraries available in Python.  These can be integrated into Zeppelin with the [IPython interpreter `%python.ipython`](https://zeppelin.apache.org/docs/latest/interpreter/python.html).\n\nSupported visualisation libraries include:\n\n- Matplotlib\n- Pandas\n- Seaborn\n- Plotnine\n- Bokeh\n- Holoviews\n- Altair",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:24:21+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482808_420748092",
+      "id": "20180117-220147_1889980489",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:24:13+0000",
+      "dateFinished": "2022-10-10T23:24:13+0000",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:4288",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>This tutorial demonstrates how to use many of the Python visualisation libraries available in Python.  These can be integrated into Zeppelin with the <a href=\"https://zeppelin.apache.org/docs/latest/interpreter/python.html\">IPython interpreter <code>%python.ipython</code></a>.</p>\n<p>Supported visualisation libraries include:</p>\n<ul>\n<li>Matplotlib</li>\n<li>Pandas</li>\n<li>Seaborn</li>\n<li>Plotnine</li>\n<li>Bokeh</li>\n<li>Holoviews</li>\n<li>Altair</li>\n</ul>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": " Matplotlib",
+      "text": "%md\n\n[Matplotlib](https://matplotlib.org/) is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.\n\nThe usage of Matplotlib in Zeppelin is the same as Jupyter Notebook.  The key is to put `%matplotlib inline` before using Matplotlig.\n\nIn this example we'll demonstrate how we can contruct a workflow as a sequence of paragraphs:\n1. `Matplotlib Example: Load Data in a Separate Paragraph` is responsible for loading the data\n2. `Matplotlib Example:Bar Lable` loads performs the compute and displays the visualisation\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:24:34+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 149,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482810_-1147533206",
+      "id": "20180118-090246_2126121401",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:24:30+0000",
+      "dateFinished": "2022-10-10T23:24:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4289",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://matplotlib.org/\">Matplotlib</a> is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.</p>\n<p>The usage of Matplotlib in Zeppelin is the same as Jupyter Notebook.  The key is to put <code>%matplotlib inline</code> before using Matplotlig.</p>\n<p>In this example we&rsquo;ll demonstrate how we can contruct a workflow as a sequence of paragraphs:</p>\n<ol>\n<li><code>Matplotlib Example: Load Data in a Separate Paragraph</code> is responsible for loading the data</li>\n<li><code>Matplotlib Example:Bar Lable</code> loads performs the compute and displays the visualisation</li>\n</ol>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Matplotlib Example: Load Data in a Separate Paragraph",
+      "text": "%python.ipython\n\nimport numpy as np\n\nN = 5\nmenMeans = (20, 35, 30, 35, -27)\nwomenMeans = (25, 32, 34, 20, -25)\nmenStd = (2, 3, 4, 1, 2)\nwomenStd = (3, 5, 2, 3, 3)\nind = np.arange(N)    # the x locations for the groups\nwidth = 0.35       # the width of the bars: can also be len(x) sequence",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:13:40+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "editorHide": false,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1626477923780_1366240885",
+      "id": "paragraph_1626477923780_1366240885",
+      "dateCreated": "2021-07-16T23:25:23+0000",
+      "dateStarted": "2022-10-10T02:59:20+0000",
+      "dateFinished": "2022-10-10T02:59:20+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4290"
+    },
+    {
+      "title": "Matplotlib Example: Bar Label",
+      "text": "%python.ipython\n\n%matplotlib inline\n\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n\np1 = ax.bar(ind, menMeans, width, yerr=menStd, label='Men')\np2 = ax.bar(ind, womenMeans, width,\n            bottom=menMeans, yerr=womenStd, label='Women')\n\nax.axhline(0, color='grey', linewidth=0.8)\nax.set_ylabel('Scores')\nax.set_title('Scores by group and gender')\nax.set_xticks(ind)\nax.set_xticklabels(('G1', 'G2', 'G3', 'G4', 'G5'))\nax.legend()\n\n# Label with label_type 'center' instead of the default 'edge'\nax.bar_label(p1, label_type='center')\nax.bar_label(p2, label_type='center')\nax.bar_label(p2)\n\nplt.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:13:45+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482810_-1322704841",
+      "id": "20180117-220535_590781730",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T02:59:29+0000",
+      "dateFinished": "2022-10-10T02:59:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4291"
+    },
+    {
+      "title": "Pandas",
+      "text": "%md\n\n[Pandas](https://pandas.pydata.org/) provides a high level API for visualisations against [pandas.DataFrame](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html).\n\n> **_NOTE:_** Zeppelin paragraphs use Matplotlib for the underlying visualisation. ",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:24:52+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482811_125744258",
+      "id": "20180118-090527_1578553673",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:24:49+0000",
+      "dateFinished": "2022-10-10T23:24:49+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4292",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://pandas.pydata.org/\">Pandas</a> provides a high level API for visualisations against <a href=\"https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html\">pandas.DataFrame</a>.</p>\n<blockquote>\n<p><strong><em>NOTE:</em></strong> Zeppelin paragraphs use Matplotlib for the underlying visualisation.</p>\n</blockquote>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Pandas Example",
+      "text": "%python.ipython\n\n%matplotlib inline\n\nimport pandas as pd\nimport numpy as np\n\nts = pd.Series(np.random.randn(1000), index=pd.date_range('1/1/2000', periods=1000))\nts = ts.cumsum()\nts.plot()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:14:04+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482811_-1394723261",
+      "id": "20180117-220828_1751137554",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T02:59:34+0000",
+      "dateFinished": "2022-10-10T02:59:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4293"
+    },
+    {
+      "title": "Seaborn",
+      "text": "%md\n\n[Seaborn](https://seaborn.pydata.org/) is a Python visualisation library based on matplotlib.  It provides a high-level interface for drawing attractive statistical graphics.  Its usage in Zeppelin is the same as in Jupyter.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:25:05+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482811_1702400931",
+      "id": "20180118-091931_1235694337",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:25:01+0000",
+      "dateFinished": "2022-10-10T23:25:01+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4294",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://seaborn.pydata.org/\">Seaborn</a> is a Python visualisation library based on matplotlib.  It provides a high-level interface for drawing attractive statistical graphics.  Its usage in Zeppelin is the same as in Jupyter.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Seaborn Example",
+      "text": "%python.ipython\n\n%matplotlib inline\n\nimport seaborn as sns\nsns.set(style=\"ticks\")\n\n# Load the example dataset for Anscombe's quartet\ndf = sns.load_dataset(\"anscombe\")\n\n# Show the results of a linear regression within each dataset\nsns.lmplot(x=\"x\", y=\"y\", col=\"dataset\", hue=\"dataset\", data=df,\n           col_wrap=2, ci=None, palette=\"muted\", height=4,\n           scatter_kws={\"s\": 50, \"alpha\": 1})\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:14:15+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482811_576440533",
+      "id": "20180117-220708_660528060",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T02:59:38+0000",
+      "dateFinished": "2022-10-10T02:59:41+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4295"
+    },
+    {
+      "title": "plotnine",
+      "text": "%md\n\n[plotnine](https://plotnine.readthedocs.io/en/stable/) is an implementation of a _grammar of graphics_ in Python, it is based on [ggplot2](https://ggplot2.tidyverse.org/).  The grammar allows users to compose plots by explicitly mapping data to the visual objects that make up the plot.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:25:18+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885213779_377546255",
+      "id": "paragraph_1580885213779_377546255",
+      "dateCreated": "2020-02-05T14:46:53+0000",
+      "dateStarted": "2022-10-10T23:25:14+0000",
+      "dateFinished": "2022-10-10T23:25:14+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4296",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://plotnine.readthedocs.io/en/stable/\">plotnine</a> is an implementation of a <em>grammar of graphics</em> in Python, it is based on <a href=\"https://ggplot2.tidyverse.org/\">ggplot2</a>.  The grammar allows users to compose plots by explicitly mapping data to the visual objects that make up the plot.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Plotnine Example (1)",
+      "text": "%python.ipython\n\n%matplotlib inline  \n\nfrom plotnine import *\nfrom plotnine.data import mtcars\n\n(ggplot(mtcars, aes('wt', 'mpg'))\n + geom_point())\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:14:31+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885221038_719317105",
+      "id": "paragraph_1580885221038_719317105",
+      "dateCreated": "2020-02-05T14:47:01+0000",
+      "dateStarted": "2022-10-10T03:01:49+0000",
+      "dateFinished": "2022-10-10T03:01:56+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4297"
+    },
+    {
+      "title": "Plotnine Example (2)",
+      "text": "%python.ipython\n\n(ggplot(mtcars, aes('wt', 'mpg', color='factor(gear)'))\n + geom_point()\n + stat_smooth(method='lm')\n + facet_wrap('~gear'))",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:14:35+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885791251_758930573",
+      "id": "paragraph_1580885791251_758930573",
+      "dateCreated": "2020-02-05T14:56:31+0000",
+      "dateStarted": "2022-10-10T03:01:59+0000",
+      "dateFinished": "2022-10-10T03:02:00+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4298"
+    },
+    {
+      "title": "Bokeh",
+      "text": "%md\n\n[Bokeh](https://bokeh.pydata.org/en/latest/) is a Python interactive visualisation library that targets modern web browsers for presentation.  Its goal is to provide elegant, concise construction of novel graphics in the style of [D3.js](https://d3js.org/) and to extend this capability with high-performance interactivity over very large or streaming datasets.  Bokeh can help anyone who would like to quickly and easily create interactive plots, dashboards, and data applications.",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:25:38+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482814_1997313050",
+      "id": "20180118-092227_1380687854",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:25:34+0000",
+      "dateFinished": "2022-10-10T23:25:34+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4299",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://bokeh.pydata.org/en/latest/\">Bokeh</a> is a Python interactive visualisation library that targets modern web browsers for presentation.  Its goal is to provide elegant, concise construction of novel graphics in the style of <a href=\"https://d3js.org/\">D3.js</a> and to extend this capability with high-performance interactivity over very large or streaming datasets.  Bokeh can help anyone who would like to quickly and easily create interactive plots, dashboards, and data applications.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Bokeh Example (1)",
+      "text": "%python.ipython\n\nfrom bokeh.io import show, output_notebook\nfrom bokeh.plotting import figure\nfrom bokeh.sampledata.iris import flowers\n\ncolormap = {'setosa': 'red', 'versicolor': 'green', 'virginica': 'blue'}\ncolors = [colormap[x] for x in flowers['species']]\n\noutput_notebook()\n\np = figure(title=\"Iris Morphology\")\np.xaxis.axis_label = 'Petal Length'\np.yaxis.axis_label = 'Petal Width'\n\np.scatter(flowers[\"petal_length\"], flowers[\"petal_width\"],\n          color=colors, fill_alpha=0.2, size=10)\n\nshow(p)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:32:27+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "title": true,
+        "tableHide": false,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482814_278965699",
+      "id": "20180118-092433_377794298",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T03:32:10+0000",
+      "dateFinished": "2022-10-10T03:32:16+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4300"
+    },
+    {
+      "title": "Bokeh Example (2): Source Test Data",
+      "text": "%python.ipython\n\nfrom bokeh.sampledata import download\ndownload()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:32:27+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {},
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1626345227565_1454674089",
+      "id": "paragraph_1626345227565_1454674089",
+      "dateCreated": "2021-07-15T10:33:47+0000",
+      "dateStarted": "2022-10-10T03:32:27+0000",
+      "dateFinished": "2022-10-10T03:32:28+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4301"
+    },
+    {
+      "title": "Bokeh Example (2)",
+      "text": "%python.ipython\n\nfrom bokeh.io import output_notebook, show\nfrom bokeh.models import LogColorMapper\nfrom bokeh.palettes import Viridis6 as palette\nfrom bokeh.plotting import figure\n\nfrom bokeh.sampledata.unemployment import data as unemployment\nfrom bokeh.sampledata.us_counties import data as counties\n\noutput_notebook()\n\npalette = tuple(reversed(palette))\n\ncounties = {\n    code: county for code, county in counties.items() if county[\"state\"] == \"tx\"\n}\n\ncounty_xs = [county[\"lons\"] for county in counties.values()]\ncounty_ys = [county[\"lats\"] for county in counties.values()]\n\ncounty_names = [county['name'] for county in counties.values()]\ncounty_rates = [unemployment[county_id] for county_id in counties]\ncolor_mapper = LogColorMapper(palette=palette)\n\ndata=dict(\n    x=county_xs,\n    y=county_ys,\n    name=county_names,\n    rate=county_rates,\n)\n\nTOOLS = \"pan,wheel_zoom,reset,hover,save\"\n\np = figure(\n    title=\"Texas Unemployment, 2009\", tools=TOOLS,\n    x_axis_location=None, y_axis_location=None,\n    tooltips=[\n        (\"Name\", \"@name\"), (\"Unemployment rate\", \"@rate%\"), (\"(Long, Lat)\", \"($x, $y)\")\n    ])\np.grid.grid_line_color = None\np.hover.point_policy = \"follow_mouse\"\n\np.patches('x', 'y', source=data,\n          fill_color={'field': 'rate', 'transform': color_mapper},\n          fill_alpha=0.7, line_color=\"white\", line_width=0.5)\n\nshow(p)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:32:50+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580886029142_1541635661",
+      "id": "paragraph_1580886029142_1541635661",
+      "dateCreated": "2020-02-05T15:00:29+0000",
+      "dateStarted": "2022-10-10T03:32:51+0000",
+      "dateFinished": "2022-10-10T03:32:52+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4302"
+    },
+    {
+      "title": "HoloViews",
+      "text": "%md\n\n[HoloViews](http://holoviews.org/) is an open-source Python library designed to make data analysis and visualisation seamless and simple.  With HoloViews, you can usually express what you want to do in very few lines of code, letting you focus on what you are trying to explore and convey, not on the process of plotting.\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:25:58+0000",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9,
+        "editorHide": true,
+        "results": {},
+        "enabled": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482815_870528203",
+      "id": "20180120-131737_1287341499",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:25:54+0000",
+      "dateFinished": "2022-10-10T23:25:54+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4303",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"http://holoviews.org/\">HoloViews</a> is an open-source Python library designed to make data analysis and visualisation seamless and simple.  With HoloViews, you can usually express what you want to do in very few lines of code, letting you focus on what you are trying to explore and convey, not on the process of plotting.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "HoloViews Scatter Economic Example",
+      "text": "%python.ipython\n\nimport pandas as pd\nimport holoviews as hv\nfrom holoviews import dim, opts\nhv.extension('bokeh')\n\nmacro_df = pd.read_csv(filepath_or_buffer='http://assets.holoviews.org/macro.csv', sep='\\t')\nkey_dimensions   = [('year', 'Year'), ('country', 'Country')]\nvalue_dimensions = [('unem', 'Unemployment'), ('capmob', 'Capital Mobility'),\n                    ('gdp', 'GDP Growth'), ('trade', 'Trade')]\nmacro = hv.Table(macro_df, key_dimensions, value_dimensions)\n\ngdp_unem_scatter = macro.to.scatter('Year', ['GDP Growth', 'Unemployment'])\noverlay = gdp_unem_scatter.overlay('Country')\n\noverlay.opts(\n    opts.Scatter(color=hv.Cycle('Category20'), line_color='k', size=dim('Unemployment')*1.5,\n                 show_grid=True, width=700, height=400),\n    opts.NdOverlay(legend_position='left', show_frame=False))",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:08+0000",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9,
+        "results": {
+          "3": {
+            "graph": {
+              "mode": "table",
+              "height": 569,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482815_131583170",
+      "id": "20180120-131731_1558753626",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T03:33:08+0000",
+      "dateFinished": "2022-10-10T03:33:17+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4304"
+    },
+    {
+      "title": "HoloViews Tabulated Data: Subway Stations Example",
+      "text": "%python.ipython\n\n# Sourced from https://holoviews.org/getting_started/Introduction.html\nstation_info = pd.read_csv('https://raw.githubusercontent.com/holoviz/holoviews/master/examples/assets/station_info.csv')\nstation_info.head()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:25+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885453474_1167659991",
+      "id": "paragraph_1580885453474_1167659991",
+      "dateCreated": "2020-02-05T14:50:53+0000",
+      "dateStarted": "2022-10-10T03:33:25+0000",
+      "dateFinished": "2022-10-10T03:33:26+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4305"
+    },
+    {
+      "title": "HoloViews Tabulated Data: Subway Stations Example (Scatter)",
+      "text": "%python.ipython\n\nscatter = hv.Scatter(station_info, 'services', 'ridership')\nscatter",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:29+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885519951_-291252209",
+      "id": "paragraph_1580885519951_-291252209",
+      "dateCreated": "2020-02-05T14:51:59+0000",
+      "dateStarted": "2022-10-10T03:33:30+0000",
+      "dateFinished": "2022-10-10T03:33:30+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4306"
+    },
+    {
+      "title": "HoloViews Tabulated Data: Subway Stations Example (Scatter and Histogram)",
+      "text": "%python.ipython\n\nimport numpy as np\n\nlayout = scatter + hv.Histogram(np.histogram(station_info['opened'], bins=24), kdims=['opened'])\nlayout",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:32+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885548751_1272982082",
+      "id": "paragraph_1580885548751_1272982082",
+      "dateCreated": "2020-02-05T14:52:28+0000",
+      "dateStarted": "2022-10-10T03:33:32+0000",
+      "dateFinished": "2022-10-10T03:33:33+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4307"
+    },
+    {
+      "title": "HvPlot",
+      "text": "%md\n\n[HvPlot](https://hvplot.holoviz.org/) is a high-level plotting API for the PyData ecosystem built on HoloViews.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:26:44+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580884482945_-1037962389",
+      "id": "20180119-091845_1603850480",
+      "dateCreated": "2020-02-05T14:34:42+0000",
+      "dateStarted": "2022-10-10T23:26:11+0000",
+      "dateFinished": "2022-10-10T23:26:11+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4308",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://hvplot.holoviz.org/\">HvPlot</a> is a high-level plotting API for the PyData ecosystem built on HoloViews.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python.ipython\n\nimport numpy as np\nimport pandas as pd\nfrom bokeh.io import output_notebook\n\nidx = pd.date_range('1/1/2000', periods=1000)\ndf  = pd.DataFrame(np.random.randn(1000, 4), index=idx, columns=list('ABCD')).cumsum()\n\noutput_notebook()\n\ndf.head()",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:38+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885707198_-1652524072",
+      "id": "paragraph_1580885707198_-1652524072",
+      "dateCreated": "2020-02-05T14:55:07+0000",
+      "dateStarted": "2022-10-10T03:33:38+0000",
+      "dateFinished": "2022-10-10T03:33:38+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4309"
+    },
+    {
+      "text": "%python.ipython\n\nimport hvplot.xarray\nfrom hvplot.sample_data import us_crime\nfrom bokeh.io import output_notebook\n\noutput_notebook()\n\ncolumns = ['Burglary rate', 'Larceny-theft rate', 'Robbery rate', 'Violent Crime rate']\nus_crime.plot.violin(y=columns,\n                     group_label='Type of crime',\n                     value_label='Rate per 100k',\n                     invert=True,\n                     color='Type of crime')",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T03:33:41+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 419,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885736306_456675117",
+      "id": "paragraph_1580885736306_456675117",
+      "dateCreated": "2020-02-05T14:55:36+0000",
+      "dateStarted": "2022-10-10T03:33:41+0000",
+      "dateFinished": "2022-10-10T03:33:43+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4310"
+    },
+    {
+      "title": "Altair",
+      "text": "%md\n\n[Altair](https://altair-viz.github.io/) is a declarative statistical visualisation library for Python based on Vega and Vega-Lite and the source is available on GitHub.\n\nWith Altair, you can spend more time understanding your data and its meaning. Altair’s API is simple, friendly and consistent and built on top of the powerful Vega-Lite visualisation grammar. This elegant simplicity produces beautiful and effective visualisations with a minimal amount of code.",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:27:15+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580886248807_819045686",
+      "id": "paragraph_1580886248807_819045686",
+      "dateCreated": "2020-02-05T15:04:08+0000",
+      "dateStarted": "2022-10-10T23:27:11+0000",
+      "dateFinished": "2022-10-10T23:27:11+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4311",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p><a href=\"https://altair-viz.github.io/\">Altair</a> is a declarative statistical visualisation library for Python based on Vega and Vega-Lite and the source is available on GitHub.</p>\n<p>With Altair, you can spend more time understanding your data and its meaning. Altair’s API is simple, friendly and consistent and built on top of the powerful Vega-Lite visualisation grammar. This elegant simplicity produces beautiful and effective visualisations with a minimal amount of code.</p>\n\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python.ipython\n\nimport altair as alt\n\nalt.renderers.enable('zeppelin')\n\n# load a simple dataset as a pandas DataFrame\nfrom vega_datasets import data\ncars = data.cars()\n\nalt.Chart(cars).mark_point().encode(\n    x='Horsepower',\n    y='Miles_per_Gallon',\n    color='Origin',\n)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:27:50+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580885762824_-1733991523",
+      "id": "paragraph_1580885762824_-1733991523",
+      "dateCreated": "2020-02-05T14:56:02+0000",
+      "dateStarted": "2022-10-10T03:33:51+0000",
+      "dateFinished": "2022-10-10T03:33:52+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4312",
+      "title": "Altair Example 1"
+    },
+    {
+      "text": "%python.ipython\n\nimport altair as alt\nimport numpy as np\nimport pandas as pd\n\n# Compute x^2 + y^2 across a 2D grid\nx, y = np.meshgrid(range(-5, 5), range(-5, 5))\nz = x ** 2 + y ** 2\n\n# Convert this grid to columnar data expected by Altair\nsource = pd.DataFrame({'x': x.ravel(),\n                     'y': y.ravel(),\n                     'z': z.ravel()})\n\nalt.Chart(source).mark_rect().encode(\n    x='x:O',\n    y='y:O',\n    color='z:Q'\n)",
+      "user": "anonymous",
+      "dateUpdated": "2022-10-10T23:27:58+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580886216808_1963511607",
+      "id": "paragraph_1580886216808_1963511607",
+      "dateCreated": "2020-02-05T15:03:36+0000",
+      "dateStarted": "2022-10-10T03:33:58+0000",
+      "dateFinished": "2022-10-10T03:33:58+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4313",
+      "title": "Altair Example 2"
+    },
+    {
+      "text": "%python.ipython\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-03-11T14:24:37+0000",
+      "progress": 0,
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1580886440097_1853064047",
+      "id": "paragraph_1580886440097_1853064047",
+      "dateCreated": "2020-02-05T15:07:20+0000",
+      "status": "FINISHED",
+      "$$hashKey": "object:4314"
+    }
+  ],
+  "name": "2. IPython Visualisation Tutorial",
+  "id": "2F1S9ZY8Z",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {},
+  "path": "/Zeppelin Tutes/Python Tutorial/2. IPython Visualisation Tutorial"
+}

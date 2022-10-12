@@ -1,49 +1,60 @@
+# syntax=docker/dockerfile:1.4
+
 ARG ZEPPELIN_VERSION
-ARG UBUNTU_BASE_IMAGE
 ARG SPARK_PSEUDO_BASE_IMAGE
 
-FROM ubuntu:$UBUNTU_BASE_IMAGE AS downloader
+# Zeppelin 0.10.1 Python interpreter does not work with Python > 3.9 as per
+# https://stackoverflow.com/questions/59636631/importerror-cannot-import-name-mutablemapping-from-collections
+# Base images must use Python 3.8
+FROM $SPARK_PSEUDO_BASE_IMAGE AS builder
+
+USER root
 
 RUN apt-get update && apt-get install -y --no-install-recommends\
  wget\
- ca-certificates
+ ca-certificates &&\
+ apt-get autoremove -yqq --purge &&\
+ rm -rf /var/lib/apt/lists/* &&\
+ rm -rf /var/log/*
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 WORKDIR /tmp
 ARG ZEPPELIN_VERSION
+# Use this to get the closest mirror:
+# curl 'https://www.apache.org/dyn/closer.cgi' | grep -o '<strong>[^<]*</strong>' | sed 's/<[^>]*>//g' | head -1
 RUN wget -qO-\
- https://apache.mirror.digitalpacific.com.au/zeppelin/zeppelin-$ZEPPELIN_VERSION/zeppelin-$ZEPPELIN_VERSION-bin-netinst.tgz |\
- tar -C . -xzf -
+ https://dlcdn.apache.org/zeppelin/zeppelin-$ZEPPELIN_VERSION/zeppelin-$ZEPPELIN_VERSION-bin-netinst.tgz |\
+ tar -xzf -
+# COPY files/zeppelin-0.10.1-bin-netinst.tgz .
+# RUN tar -xzf zeppelin-0.10.1-bin-netinst.tgz
 
 # Use our own interpreter.json file.
-COPY files/interpreter.json zeppelin-${ZEPPELIN_VERSION}-bin-netinst/conf/interpreter.json
+COPY files/interpreter.json zeppelin-$ZEPPELIN_VERSION-bin-netinst/conf/interpreter.json
 
 # Merge the Cassandra Interpreter definition into conf/interpreter.json
-COPY scripts/interpreter-*.py zeppelin-${ZEPPELIN_VERSION}-bin-netinst/
+COPY scripts/interpreter-*.py zeppelin-$ZEPPELIN_VERSION-bin-netinst/
 
-COPY files/interpreter-cassandra.json.j2 zeppelin-${ZEPPELIN_VERSION}-bin-netinst/conf
+COPY files/interpreter-cassandra.json.j2 zeppelin-$ZEPPELIN_VERSION-bin-netinst/conf
 
 WORKDIR /tmp/zeppelin-$ZEPPELIN_VERSION-bin-netinst/local-repo/cassandra
 ARG MAVEN_REPO=https://repo1.maven.org/maven2
-RUN wget $MAVEN_REPO/org/scala-lang/scala-reflect/2.11.7/scala-reflect-2.11.7.jar &&\
- wget $MAVEN_REPO/org/scalatra/scalate/scalate-core_2.11/1.7.1/scalate-core_2.11-1.7.1.jar &&\
- wget $MAVEN_REPO/org/scalatra/scalate/scalate-util_2.11/1.7.1/scalate-util_2.11-1.7.1.jar &&\
- wget $MAVEN_REPO/org/scala-lang/scala-library/2.11.7/scala-library-2.11.7.jar &&\
- wget $MAVEN_REPO/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.4/scala-parser-combinators_2.11-1.0.4.jar &&\
- wget $MAVEN_REPO/org/scala-lang/scala-compiler/2.11.7/scala-compiler-2.11.7.jar &&\
- wget $MAVEN_REPO/org/scala-lang/modules/scala-xml_2.11/1.0.4/scala-xml_2.11-1.0.4.jar
+RUN wget $MAVEN_REPO/org/scala-lang/scala-reflect/2.12.15/scala-reflect-2.12.15.jar &&\
+ wget $MAVEN_REPO/org/scalatra/scalate/scalate-core_2.12/1.9.8/scalate-core_2.12-1.9.8.jar &&\
+ wget $MAVEN_REPO/org/scalatra/scalate/scalate-util_2.12/1.9.8/scalate-util_2.12-1.9.8.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/scala-library/2.12.15/scala-library-2.12.15.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/modules/scala-parser-combinators_2.12/2.1.1/scala-parser-combinators_2.12-2.1.1.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/scala-compiler/2.12.15/scala-compiler-2.12.15.jar &&\
+ wget $MAVEN_REPO/org/scala-lang/modules/scala-xml_2.12/2.1.0/scala-xml_2.12-2.1.0.jar
 
-### downloader layer end
+
+### builder layer end
 
 ARG SPARK_PSEUDO_BASE_IMAGE
-FROM loum/spark-pseudo:$SPARK_PSEUDO_BASE_IMAGE
+
+FROM $SPARK_PSEUDO_BASE_IMAGE AS main
 
 USER root
-RUN apt-get update && apt-get install -y --no-install-recommends\
- python3-venv\
- build-essential\
- python3-dev &&\
- rm -rf /var/lib/apt/lists/*
 
 # Run everything as ZEPPELIN_USER
 ARG ZEPPELIN_USER=hdfs
@@ -54,7 +65,7 @@ COPY scripts/zeppelin-bootstrap.sh /zeppelin-bootstrap.sh
 
 WORKDIR $ZEPPELIN_HOME
 ARG ZEPPELIN_VERSION
-COPY --from=downloader --chown=$ZEPPELIN_USER:$ZEPPELIN_GROUP\
+COPY --from=builder --chown=$ZEPPELIN_USER:$ZEPPELIN_GROUP\
  /tmp/zeppelin-$ZEPPELIN_VERSION-bin-netinst/ zeppelin-$ZEPPELIN_VERSION-bin-netinst
 RUN ln -s zeppelin-$ZEPPELIN_VERSION-bin-netinst zeppelin
 
@@ -90,35 +101,57 @@ export SPARK_HOME=/opt/spark/\n\
 export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop/\n'\
 >> zeppelin/conf/zeppelin-env.sh
 
+# Ditch the crappy, default tutes ...
+RUN rm -fr zeppelin/notebook/*
+ARG NOTEBOOK_SRC="files/notebook/Zeppelin Tutes"
+ARG NOTEBOOK_DEST="zeppelin/notebook/Zeppelin Tutes"
+ADD --chown=$ZEPPELIN_USER:$ZEPPELIN_GROUP $NOTEBOOK_SRC $NOTEBOOK_DEST
+
 # Need iPython for python interpreter.
 #
 # Check https://setuptools.pypa.io/en/latest/history.html#v58-0-0 as
 # to why we're pinning setuptools<58
-RUN python -m venv 3env
-RUN 3env/bin/python -m pip install --upgrade pip "setuptools<58"
-RUN 3env/bin/python -m pip install\
+RUN python -m pip install --user --upgrade pip "setuptools<58"
+
+RUN python -m pip install --user\
+ --no-compile\
  --no-cache-dir\
- jupyter-client\
- grpcio\
- protobuf\
- ipykernel\
- ipython\
- matplotlib\
- plotnine\
- seaborn\
+ protobuf==3.20.*
+
+RUN python -m pip install --user\
+ --no-compile\
+ --no-cache-dir\
+ altair\
  bokeh\
  bundle\
+ grpcio\
  hvplot\
- intake\
  intake-parquet\
  intake-xarray\
+ intake\
+ ipykernel\
+ ipython\
+ "jupyter-client<7.0.0"\
+ matplotlib\
  msgpack\
- altair\
- vega_datasets
+ pandas\
+ plotnine\
+ protobuf\
+ s3fs\
+ seaborn\
+ tzdata\
+ vega_datasets &&\
+ find .local/lib/python*/site-packages/ -depth\
+   \(\
+     \( -type d -a \( -name test -o -name tests -o -name idle_test \) \) \
+     -o \
+     \( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+  \) -exec rm -rf '{}' +;
 
 RUN ZEPPELIN_HOME=$ZEPPELIN_HOME/zeppelin\
  zeppelin/bin/install-interpreter.sh\
  --name cassandra\
- --artifact org.apache.zeppelin:zeppelin-cassandra:0.10.0
+ --artifact org.apache.zeppelin:zeppelin-cassandra:$ZEPPELIN_VERSION
 
 ENTRYPOINT [ "/zeppelin-bootstrap.sh" ]
+CMD []
